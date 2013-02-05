@@ -110,7 +110,7 @@ class FileManager
                 throw new \Exception("to_folder does not exist");
             }
             $result = null;
-            $deleteParam = ($options['destructive']) ? '--delete ' : '';
+            $deleteParam = (isset($options['destructive']) && $options['destructive']) ? '--delete ' : '';
             system("rsync -a " . $deleteParam . escapeshellarg($from . '/') . " " . escapeshellarg($to), $result);
             if ($result !== 0)
             {
